@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import Card from '../components/Card';
+import Colors from '../constants/color'
 const StartGameScreen = ( props ) =>
 {
     return (
@@ -10,8 +11,12 @@ const StartGameScreen = ( props ) =>
                 <Text>Enter A Number</Text>
                 <TextInput />
                 <View style={ styles.buttonContainer }>
-                    <Button title="Rest" onPress={ () => { } } />
-                    <Button title="Confirm" onPress={ () => { } } />
+                    <View style={ styles.button }>
+                        <Button title="Rest" onPress={ () => { } } color={ Colors.accent } />
+                    </View>
+                    <View style={ styles.button } >
+                        <Button title="Confirm" onPress={ () => { } } color={ Colors.primary } />
+                    </View>
                 </View>
             </Card>
         </View> )
@@ -19,6 +24,9 @@ const StartGameScreen = ( props ) =>
 }
 
 const styles = StyleSheet.create( {
+    button: {
+        width: 100,
+    },
     screen: {
         flex: 1,
         padding: 10,
@@ -42,3 +50,6 @@ const styles = StyleSheet.create( {
 } );
 
 export default StartGameScreen;
+
+
+// Always wrap button in a view to apply styles on them
