@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import Card from '../components/Card';
 import Colors from '../constants/color'
+import Input from '../components/Input'
 const StartGameScreen = ( props ) =>
 {
     return (
@@ -9,7 +10,7 @@ const StartGameScreen = ( props ) =>
             <Text style={ styles.title }>Start A New Game!</Text>
             <Card style={ styles.inputContainer }>
                 <Text>Enter A Number</Text>
-                <TextInput />
+                <Input style={ styles.input } blurOnSubmit autoCapitalize='none' autoCorrect='false' keyboardType="numeric" maxLength={2} />
                 <View style={ styles.buttonContainer }>
                     <View style={ styles.button }>
                         <Button title="Rest" onPress={ () => { } } color={ Colors.accent } />
@@ -46,6 +47,10 @@ const styles = StyleSheet.create( {
         width: 300,
         maxWidth: '80%',
         alignItems: 'center',
+    },
+    input: {
+        width:70,
+        textAlign:'center'
     }
 } );
 
