@@ -35,7 +35,11 @@ const StartGameScreen = ( props ) =>
     let confirmedOutput;
     if ( isConfirmed )
     {
-        confirmedOutput = (<Text>Your Selected Number is { selectedNumber }</Text>)
+        confirmedOutput = ( <Card style={ styles.confirmCard }>
+            <Text>Your Selected Number</Text>
+            <Text style={ styles.finalNumber }> { selectedNumber }</Text>
+            <Button title='Confirm' />
+        </Card> )
     }
     return (
         <TouchableWithoutFeedback onPress={ () => { Keyboard.dismiss(); } }>
@@ -93,6 +97,17 @@ const styles = StyleSheet.create( {
     input: {
         width: 70,
         textAlign: 'center'
+    },
+    confirmCard: {
+        marginTop: 20,
+        alignItems: 'center'
+    },
+    finalNumber: {
+        marginTop: 10,
+        borderColor: Colors.accent,
+        borderWidth: 1,
+        padding: 10,
+        color: Colors.accent,
     }
 } );
 
