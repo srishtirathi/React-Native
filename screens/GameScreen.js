@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import Card from '../components/Card';
 import Colors from '../constants/color'
 
@@ -21,14 +21,25 @@ const GameScreen = ( props ) =>
         }
 
     }
+    const nextGuessHandler = direction =>
+    {
+        if (
+            ( direction === 'lower' && currentGuess < props.userChoice ) ||
+            ( direction === 'greater' && currentGuess > props.userChoice )
+        )
+        {
+            Alert.alert( "Dont lie", [ { text: 'Sorry!', styles: 'cancel' } ] );
+            return;
+        }
+    }
     const [ currentGuess, setCurrentGuess ] = useState( generateRandomBetween( 1, 100, props.userChoice ) )
     return (
         <View style={ styles.screen }>
             <Text>Opponent's Guess</Text>
             <Text style={ styles.finalNumber }> { currentGuess }</Text>
             <Card style={ styles.buttonContainer }>
-                <Button title="Lower" />
-                <Button title="Greater" />
+                <Button title="Lower" onPress={ nextGuessHandler.bind( this, 'lower' ) } />
+                <Button title="Greater" onPress={ nextGuessHandler.bind( this, 'greater' ) } />
             </Card>
         </View>
     )

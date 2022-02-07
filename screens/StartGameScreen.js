@@ -26,7 +26,6 @@ const StartGameScreen = ( props ) =>
         if ( isNaN( chosenNumber ) || chosenNumber < 0 || chosenNumber > 99 )
         {
             Alert.alert( 'Invalid Number', 'Number has to be between 0 and 99', [ { text: 'Okay', style: 'destructive', onPress: { resetInputHandler } } ] );
-            return;
         }
         setConfirmed( true );
         setSelectedNumber( chosenNumber );
@@ -50,7 +49,6 @@ const StartGameScreen = ( props ) =>
                     <Input style={ styles.input }
                         blurOnSubmit
                         autoCapitalize='none'
-                        autoCorrect='false'
                         keyboardType="number-pad"
                         maxLength={ 2 }
                         value={ enteredValue }
